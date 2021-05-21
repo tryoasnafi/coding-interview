@@ -7,16 +7,22 @@ public class FizzBuzz {
     public List<String> fizzBuzz(int n) {
         List<String> result = new ArrayList<>();
 
-        for (int i = 1; i <= n; i++) {
+        return fizzBuzzRecursive(result, n, 0);
+    }
+
+    private List<String> fizzBuzzRecursive(List<String> result, int n, int i) {
+        if (i <= n) {
             if (i % 3 == 0 && i % 5 == 0) {
                 result.add("FizzBuzz");
             } else if (i % 3 == 0) {
                 result.add("Fizz");
             } else if (i % 5 == 0) {
                 result.add("Buzz");
-            } else {
-                result.add(String.valueOf(i));
             }
+
+            result.add(String.valueOf(i));
+
+            return fizzBuzzRecursive(result, n, i + 1);
         }
 
         return result;
