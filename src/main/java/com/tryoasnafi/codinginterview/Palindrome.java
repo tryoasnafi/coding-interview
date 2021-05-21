@@ -11,11 +11,16 @@ public class Palindrome {
                 .matcher(value.toLowerCase())
                 .replaceAll("");
 
-        for (int i = 0; i < newValue.length() / 2; i++) {
+        return isPalindromeRecursive(newValue, 0);
+    }
+
+    private  boolean isPalindromeRecursive(String value, int i) {
+        if (i < value.length() / 2) {
             // If not same letter is not palindrome
-            if (!(newValue.charAt(i) == newValue.charAt(newValue.length() - i - 1))) {
+            if (!(value.charAt(i) == value.charAt(value.length() - i - 1))) {
                 return false;
             }
+            return isPalindromeRecursive(value, i + 1);
         }
         // If the compare iteration complete is always return true
         return true;
